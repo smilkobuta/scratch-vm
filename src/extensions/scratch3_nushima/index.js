@@ -38,7 +38,7 @@ class Scratch3Nushima {
     }
 
     fetchKisenMessage () {
-        http.get('https://nushima-yoshijin.jp/kisen/status/message', resp => {
+        http.get('https://smilkobuta3104.bf1.jp/nushimakisen/status', resp => {
             let data = '';
         
             // A chunk of data has been received.
@@ -49,7 +49,7 @@ class Scratch3Nushima {
             resp.on('end', () => {
                 const kisenStatus = JSON.parse(data);
                 log.log(kisenStatus);
-                for (let status in kisenStatus) {
+                for (const status in kisenStatus) {
                     this.statusMessage = kisenStatus[status].message;
                 }
             });
