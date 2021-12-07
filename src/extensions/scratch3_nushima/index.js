@@ -2,7 +2,7 @@ const ArgumentType = require('../../extension-support/argument-type');
 const BlockType = require('../../extension-support/block-type');
 const Cast = require('../../util/cast');
 const log = require('../../util/log');
-const http = require('http');
+const http = require('https');
 
 class Scratch3Nushima {
     constructor (runtime) {
@@ -38,7 +38,7 @@ class Scratch3Nushima {
     }
 
     fetchKisenMessage () {
-        http.get('http://nushima-yoshijin.jp/kisen/status/message', resp => {
+        http.get('https://nushima-yoshijin.jp/kisen/status/message', resp => {
             let data = '';
         
             // A chunk of data has been received.
