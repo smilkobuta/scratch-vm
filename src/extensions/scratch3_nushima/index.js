@@ -38,6 +38,8 @@ class Scratch3Nushima {
     }
 
     fetchKisenMessage () {
+        this.statusMessage = '';
+        
         http.get('https://smilkobuta3104.bf1.jp/nushimakisen/status', resp => {
             let data = '';
         
@@ -52,10 +54,14 @@ class Scratch3Nushima {
                 for (const status in kisenStatus) {
                     this.statusMessage = kisenStatus[status].message;
                 }
+                if (!this.statusMessage) {
+                    this.statusMessage = 'いまはうごいていないにゃん';
+                }
             });
         
         }).on('error', err => {
             log.log(`Error: ${err.message}`);
+            this.statusMessage = 'エラーみたいだにゃん';
         });
     }
 
